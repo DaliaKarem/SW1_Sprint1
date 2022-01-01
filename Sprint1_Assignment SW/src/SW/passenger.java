@@ -1,44 +1,44 @@
-package SW;
+package com.company;
 
-import java.util.*;
+public class Passenger implements Observer{
+    private String srcName;
+    private String desName;
+    Driver obj=new Driver();
 
-public class passenger implements Notification{
-    Driver D1;
-    Scanner in=new Scanner(System.in);
-    Map<String,String> area=new HashMap<String,String>() ;
-    ArrayList<RegisterAsPass> passengers=new ArrayList<RegisterAsPass>();
-    Driver d;
-    String source,dest;
-    ArrayList<Register> Pass=new ArrayList<>();
-    void setSource(String source){this.source=source;}
-    String getSource(){return source;}
-    void setDest(String dest){this.dest=dest;}
-    String getDest(){return dest;}
-   void Addpass(RegisterAsPass p){
-        passengers.add(p);
-   }
-    //should search about email and pass
-   void searchPass(RegisterAsPass p){
-        if(passengers.contains(p)){
-            //enter on system
-        }else {
-            System.out.println("you 'r not on the system ,please Sign UP ");
+    public Passenger(){
+
+    }
+
+    public void setDesName(String desName) {
+        this.desName = desName;
+    }
+    public String getDesName(){
+        return desName;
+    }
+
+    public void setSrcName(String srcName) {
+        Driver obj=new Driver();
+        if(obj.getFavAreas().contains(srcName)){
+            obj.setSrcAreaList(srcName);
         }
-   }
-    void req_aride(String source,String Dest){
-        setDest(source);
-        setDest(Dest);
-        area.put(source,dest);
-        D1.res_area(source);
+        this.srcName = srcName;
+    }
+    public String getSrcName(){
+        return srcName;
     }
 
-
-    @Override
-    public void update() {
-
+    public void requestARide(String source,String destination){
+        setSrcName(source);
+        setDesName(destination);
     }
-    @Override
-    public void Notify() {
 
+    @Override
+    public void Notify_Driver() {
+        obj.Update_Driver(getSrcName());
+    }
+
+    @Override
+    public void update_Passenger(double offer) {
+        System.out.println("The offer of this src area is: "+offer);
     }
 }

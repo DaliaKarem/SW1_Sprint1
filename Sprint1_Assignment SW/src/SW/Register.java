@@ -1,89 +1,31 @@
-package SW;
-import java.util.ArrayList;
-abstract class Register {
-       String user_Name="";
-       long Mobile=0;
-       String E_mail="";
-      String pass="";
-     public void setname(String username){
-         this.user_Name=username;
-     }
-     public String getname(){
-         return user_Name;
-     }
-     public  void setmobile(long mobile){
-         this.Mobile=mobile;
-     }
-     public long getmobile(){
-         return Mobile;
-     }
-    abstract public  void setmail(String e_mail);
-   abstract public   String getmail();
-    abstract public  void setpass(String pass);
-     abstract public  String getpass();
-}
-class RegisterAsPass extends Register{
+package com.company;
 
-    @Override
-    public void setmail(String e_mail) {
-        this.E_mail=e_mail;
+public abstract class Register extends Info {
+    protected String Email;
+    protected long mobileNum;
+
+    public Register() {
     }
 
-    @Override
-    public String getmail() {
-        return E_mail;
+    public Register(String username, String pass, String email, long mobile) {
+        super(username, pass);
+        this.Email = email;
+        this.mobileNum = mobile;
     }
 
-    @Override
-    public void setpass(String pass) {
-        this.pass=pass;
-    }
+    public abstract void setPassword(String var1);
 
-    @Override
-    public String getpass() {
-        return pass;
-    }
+    public abstract void setUserName(String var1);
 
-}
-class RegisterAsDriver extends Register{
+    public abstract void setEmail(String var1);
 
-    long license=0;
-    long nationalID=0;
-    ArrayList<Register> pending=new ArrayList();
-    public void setlicense(long license) {
-        this.license=license;
-    }
+    public abstract void setMobileNum(long var1);
 
+    public abstract String getPassword();
 
-    public long getlicense() {
-        return license;
-    }
-    public void setID(long nationalid) {
-        this.nationalID=nationalid;
-    }
+    public abstract String getUserName();
 
+    public abstract long getMobileNum();
 
-    public long getID() {
-        return nationalID;
-    }
-
-    @Override
-    public void setmail(String e_mail) {
-        this.E_mail=e_mail;
-    }
-
-    @Override
-    public String getmail() {
-        return E_mail;
-    }
-
-    @Override
-    public void setpass(String pass) {
-        this.pass=pass;
-    }
-
-    @Override
-    public String getpass() {
-        return pass;
-    }
+    public abstract String getEmail();
 }
