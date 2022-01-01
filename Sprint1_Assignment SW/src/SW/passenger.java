@@ -28,8 +28,8 @@ public class Passenger implements Observer{
     }
 
     public void requestARide(String source,String destination){
-        //setSrcName(source);
-        //setDesName(destination);
+        setSrcName(source);
+        setDesName(destination);
     }
 
     @Override
