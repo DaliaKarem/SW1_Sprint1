@@ -1,6 +1,8 @@
 package com.company;
 
-public abstract priceRide {
-    Ride obj;
-    public double getprice(){return obj.getprice();}//we have to create Ride Class
+ abstract class PriceRide {
+    double price;
+    PutPrice obj2=new PutPrice();
+    public abstract double getPrice();
+    public abstract void setPrice(double price);
 }

@@ -18,11 +18,10 @@ public class RegisterAsDriver extends Register {
     }
 
     public void setUserName(String userName) {
-        Scanner input = new Scanner(System.in);
         for(int i = 0; i < obj.getDriversUsingSystem().size(); ++i) {
             if (userName.equals(obj.getDriversUsingSystem().get(i).getUserName())) {
                 System.out.println("This UserName is already exist on the system ,please enter another one:");
-               
+                Scanner input = new Scanner(System.in);
                 userName = input.nextLine();
                 this.setUserName(userName);
                 break;
@@ -30,7 +29,6 @@ public class RegisterAsDriver extends Register {
         }
 
         this.userName = userName;
-        input.close();
     }
 
     public void setPassword(String Password) {

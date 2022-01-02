@@ -51,16 +51,12 @@ public class RateDriver extends Rating{
                     System.out.println("enter the rate:");
                     rate=input.nextInt();
                     rateTheDriver( id, rate);
-                    
-                }
-                else if(choice==2){
-                    input.close();
-                    return ;
+                }else if(choice==2){
+                    return;
                 }else {
                     System.out.println("invalid choice");
                 }
             }
-    input.close();        
     }
 
     @Override

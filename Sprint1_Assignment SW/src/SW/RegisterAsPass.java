@@ -4,20 +4,21 @@ import java.util.Scanner;
 
 public class RegisterAsPass extends Register {
     Data obj=new Database();
+    String DOB;
 
     public RegisterAsPass() {
     }
 
-    public RegisterAsPass(String username, String pass, String email, long mobile) {
+    public RegisterAsPass(String username, String pass, String email, long mobile,String DOB) {
         super(username, pass, email, mobile);
+        this.DOB=DOB;
     }
 
     public void setUserName(String userName) {
-        Scanner input = new Scanner(System.in);
         for(int i = 0; i < obj.getPassUsingSystem().size(); ++i) {
             if (userName.equals(obj.getPassUsingSystem().get(i).getUserName())) {
                 System.out.println("This UserName is already exist on the system ,please enter another one:");
-              
+                Scanner input = new Scanner(System.in);
                 userName = input.nextLine();
                 this.setUserName(userName);
                 break;
@@ -25,7 +26,6 @@ public class RegisterAsPass extends Register {
         }
 
         this.userName = userName;
-        input.close();
     }
 
     public void setPassword(String Password) {
@@ -41,25 +41,28 @@ public class RegisterAsPass extends Register {
     }
 
     public long getMobileNum() {
-        System.out.println(this.mobileNum);
         return this.mobileNum;
     }
 
     public String getEmail() {
-        System.out.println(this.Email);
         return this.Email;
     }
 
     public String getUserName() {
-        System.out.println(this.userName);
         return this.userName;
     }
 
     public String getPassword() {
-        System.out.println(this.Password);
         return this.Password;
     }
 
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
     @Override
     public String toString() {
         return "RegisterAsPass{" +

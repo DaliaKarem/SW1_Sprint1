@@ -23,7 +23,7 @@ public class Login extends Info {
             }
         }
         if(status==true) {
-           
+            Login obj=new Login(userName,pass);
             System.out.println("_Welcome to your account_");
         }else {
             boolean stat = false;
@@ -55,7 +55,7 @@ public class Login extends Info {
             }
         }
         if(stat==true) {
-           
+            Login obj=new Login(userName,pass);
             System.out.println("_Welcome to your account_");
         }
         else {

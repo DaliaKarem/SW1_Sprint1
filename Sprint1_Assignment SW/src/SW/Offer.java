@@ -1,6 +1,6 @@
 package com.company;
 
-public class Offer implements Price{
+public class Offer implements Price_Offer{
     public double offer = 0;
     Passenger obj=new Passenger();
 

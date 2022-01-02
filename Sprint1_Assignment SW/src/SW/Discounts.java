@@ -1,5 +1,8 @@
 package com.company;
 
-public interface Discounts extends priceRide {
-    
+public abstract class Discounts extends PriceRide {
+    @Override
+    public double getPrice(){
+        return obj2.getPrice();
+    }
 }
