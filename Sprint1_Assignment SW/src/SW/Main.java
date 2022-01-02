@@ -282,9 +282,9 @@ public class Main {
                                         //System.out.println(obj7.getSrcName());
                                         break;
                                     case 2:
-                                        System.out.print("Enter the number of rate (1 worst to 5 Best) ,please: ");
+                                        System.out.print("Enter the number of rate (1 worst to 5 Best) : ");
                                         int rate = input.nextInt();
-                                        System.out.println("Enter the nationalID of the driver ,please:");
+                                        System.out.println("Enter the nationalID of the driver :");
                                         long id = input.nextLong();
                                         obj6.rateTheDriver(id, rate);
                                         obj9.setAllRatingsOfDriver(obj6);
@@ -310,7 +310,7 @@ public class Main {
                 break;
         }
         }
-        //System.out.println(obj9.getPending_drivers().get(0).getNationalID());
-        //System.out.println(obj9.getPending_drivers());
+        /*System.out.println(obj9.getPending_drivers().get(0).getNationalID());
+        System.out.println(obj9.getPending_drivers());*/
     }
 }
