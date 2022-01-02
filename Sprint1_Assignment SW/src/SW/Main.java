@@ -1,11 +1,9 @@
 package com.company;
 
-//import java.io.IOException;
-//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args){
         Data obj9 = new Database();
         Driver obj3 = new Driver();
         Offer obj4 = new Offer();
@@ -38,7 +36,7 @@ public class Main {
                     String name = input.next();
                     System.out.print("Password: ");
                     String pass = input.next();
-                    if (obj5.check_Admin(name, pass)) {
+                    if (obj5.check_Admin(name, pass)==true) {
                         System.out.println("_Welcome to your account_");
                         while (true) {
                             System.out.println("Enter the choice which U want ,please:");
@@ -110,12 +108,14 @@ public class Main {
                     String email1 = input.next();
                     System.out.print("MobileNumber: ");
                     long mobile1 = input.nextLong();
+                    System.out.println("Date of Birth:");
+                    String DOB=input.next();
                     if (name5.equals(obj2.getUserName()) || name5.equals("")) {
                         System.out.println("Invalid username");
                     } else {
                         obj1.setUserName(name5);
 
-                        obj1 = new RegisterAsPass(name5, pass3, email1, mobile1);
+                        obj1 = new RegisterAsPass(name5, pass3, email1, mobile1,DOB);
                         //obj1.setPassengers(obj1);
                         obj9.setPassUsingSystem(obj1);
                         //obj1.setMap_pass(name5,pass3);
@@ -136,7 +136,7 @@ public class Main {
                                     String Source = input.next();
                                     System.out.print("Enter the destination area ,please");
                                     String des = input.next();
-                                 //boolean status=false;  
+                                    boolean status = false;
                                 /*for (int i=0;i<obj3.getFavAreas().size();i++){
                                     if(Source.equals(obj3.getfavAreas().get(i))){
                                         status=true;
@@ -147,7 +147,12 @@ public class Main {
                                     obj3.setSrcAreaList(Source);
                                     //    counter++;
                                     //}
-                                    obj7.requestARide(Source, des);
+                                    System.out.println("Enter the number of passengers ,please:");
+                                    int number;
+                                    number=input.nextInt();
+                                    System.out.println("Enter the Driver id who u will ride with  ,please:");
+                                    long ID=input.nextLong();
+                                    obj7.requestARide(Source, des,number,ID);
                                     System.out.println("Your ride is requested successfully");
                                     //System.out.println(obj7.getSrcName());
                                     break;
@@ -257,7 +262,7 @@ public class Main {
                                         String Source = input.next();
                                         System.out.print("Enter the destination area ,please");
                                         String des = input.next();
-                                      
+                                        boolean status = false;
                                 /*for (int i=0;i<obj3.getFavAreas().size();i++){
                                     if(Source.equals(obj3.getfavAreas().get(i))){
                                         status=true;
@@ -268,7 +273,12 @@ public class Main {
                                         obj3.setSrcAreaList(Source);
                                         //    counter++;
                                         //}
-                                        obj7.requestARide(Source, des);
+                                        System.out.println("Enter the number of passengers ,please:");
+                                        int num;
+                                        num=input.nextInt();
+                                        System.out.println("Enter the Driver ID who u will ride with ,please:");
+                                         long ID=input.nextLong();
+                                        obj7.requestARide(Source, des,num,ID);
                                         //System.out.println(obj7.getSrcName());
                                         break;
                                     case 2:
@@ -302,7 +312,5 @@ public class Main {
         }
         //System.out.println(obj9.getPending_drivers().get(0).getNationalID());
         //System.out.println(obj9.getPending_drivers());
-input.close();
     }
-    
 }

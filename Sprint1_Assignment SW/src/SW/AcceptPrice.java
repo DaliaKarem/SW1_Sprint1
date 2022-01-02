@@ -7,11 +7,9 @@ public class AcceptPrice extends Events{
     boolean isAccepted;
     public AcceptPrice(){}
 
-
-
-    public AcceptPrice(String name, LocalTime time, String driver_name) {
+    public AcceptPrice(String name, LocalTime time, String DriverName) {
         super(name,time);
-        this.DriverName = driver_name;
+        this.DriverName = DriverName;
     }
     public boolean Accept_Price(boolean isAccepted) {
         this.isAccepted=isAccepted;

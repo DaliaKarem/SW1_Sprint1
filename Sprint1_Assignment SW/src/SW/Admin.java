@@ -1,9 +1,10 @@
 package com.company;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Admin {
+public class Admin implements Observer_Admin{
     Data obj2=new Database();
     Scanner input;
     private static Admin instance = new Admin();
@@ -22,7 +23,7 @@ public class Admin {
         UserName = userName;
     }
 
-    public  String getUserName() {
+    public static String getUserName() {
         return UserName;
     }
 
@@ -53,8 +54,8 @@ public class Admin {
 
     public void suspendAccount(String userName) {
         boolean status = false;
-        for(int i = 0; i < obj2.getDriversUsingSystem().size(); i++) {
-            if (userName.equals((obj2.getDriversUsingSystem().get(i)).getUserName())) {
+        for(int i = 0; i < obj2.driversUsingSystem.size(); i++) {
+            if (userName.equals((obj2.driversUsingSystem.get(i)).getUserName())) {
                 obj2.setSuspendingAccounts(userName);
                 status = true;
                 break;
@@ -86,29 +87,11 @@ public class Admin {
         }
 
         if (!status) {
-            boolean stat=false;
-            for(int i = 0; i < obj2.getDriversUsingSystem().size(); i++) {
-            if (obj2.getDriversUsingSystem().get(i).getUserName().contains(userName)) {
-                stat=true;
+            if (obj2.getDriversUsingSystem().contains(userName)) {
                 System.out.println("This account is found on the system but not suspended");
-            break;
-            }}
-             if(stat==false)
-            {
-                System.out.println("This account isn't found on the system ");
-  
-         } 
-        for(int i = 0; i < obj2.getPassUsingSystem().size(); i++) {
-         if(obj2.getPassUsingSystem().get(i).getUserName().contains(userName))
-            {stat=true;
+            } else if(obj2.getPassUsingSystem().contains(userName)){
                 System.out.println("This account is found on the system but not suspended");
-                break;
-            }}
-            if(stat==false)
-            {
-                System.out.println("This account isn't found on the system ");
-  
-         } 
+            }
             else {
                 System.out.println("This UserName isn't correct and not found on the System");
             }
@@ -122,5 +105,52 @@ public class Admin {
 
     public ArrayList<RegisterAsDriver> getDriversUsingTheSystem() {
         return obj2.getDriversUsingSystem();
+    }
+
+
+    @Override
+    public void update_Price(double price, String eventName, String driver_name, LocalTime time) {
+        System.out.println("Event Name: "+eventName);
+        System.out.println("Driver Name: "+driver_name);
+        System.out.println("The price of the ride is: "+price);
+        System.out.println("Time: "+time);
+    }
+
+    @Override
+    public void update_isArrivedLoc(boolean arrived, String eventName, String driver_name, LocalTime time, String pass_name) {
+        System.out.println("Event Name: "+eventName);
+        System.out.println("Driver Name: "+driver_name);
+        System.out.println("Passenger Name: "+pass_name);
+        System.out.println("Time: "+time);
+        if(arrived){
+         System.out.println("Now The driver arrived Location");
+     }else{
+            System.out.println("The driver still not arrived Location");
+        }
+    }
+
+    @Override
+    public void update_isArrivedDes(boolean arrived, String eventName, String driver_name, LocalTime time, String pass_name) {
+        System.out.println("Event Name: "+eventName);
+        System.out.println("Driver Name: "+driver_name);
+        System.out.println("Passenger Name: "+pass_name);
+        System.out.println("Time: "+time);
+        if(arrived){
+            System.out.println("Now The driver arrived Destination");
+        }else{
+            System.out.println("The driver still not arrived Destination");
+        }
+    }
+
+    @Override
+    public void update_isAccept(boolean accept, String eventName, String pass_name, LocalTime time) {
+        System.out.println("Event Name: "+eventName);
+        System.out.println("Passenger Name: "+pass_name);
+        System.out.println("Time: "+time);
+        if(accept){
+            System.out.println("The passenger accepts the price that the driver has put");
+        }else{
+            System.out.println("The passenger refuses the price that the driver has put");
+        }
     }
 }
